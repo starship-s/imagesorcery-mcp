@@ -57,8 +57,7 @@ mcp = FastMCP(
     instructions=(
         "An MCP server providing tools for image processing operations. "
         "Input images must be specified with full paths."
-    ),
-    log_level="DEBUG"
+    )
 )
 
 validation_middleware = ImprovedValidationMiddleware(logger=logger)
@@ -174,11 +173,12 @@ def main():
             transport=args.transport,
             host=args.host,
             port=args.port,
-            path=args.path
+            path=args.path,
+            log_level="DEBUG",
         )
     else:
         # Use default stdio transport
-        mcp.run()
+        mcp.run(log_level="DEBUG")
 
 if __name__ == "__main__":
     main()
